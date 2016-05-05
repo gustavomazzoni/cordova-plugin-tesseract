@@ -1,5 +1,4 @@
 # Cordova Plugin OCR Tesseract - For Android and iOS
-===================================================
 
 ## Using this plugin
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+           id="cordova-plugin-tesseract"
+      version="0.0.1">
+    <name>Tesseract Plugin</name>
+    
+    <engines>
+        <engine name="cordova-android" version=">=3.6.0" /><!-- Requires CordovaPlugin.preferences -->
+    </engines>
+
+    <js-module src="www/tesseractPlugin.js" name="TesseractPlugin">
+        <clobbers target="TesseractPlugin" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="TesseractPlugin">
+                <param name="android-package" value="com.menufortourist.cordova.TesseractPlugin"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/TesseractPlugin.java" target-dir="src/com/tesseract/phonegap" />
+    </platform>
+
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+		    <feature name="TesseractPlugin">
+			    <param name="ios-package" value="TesseractPlugin"/>
+                <param name="onload" value="true" />
+		    </feature>
+        </config-file>
+
+        <header-file src="src/ios/claseAuxiliar.h" />
+        <source-file src="src/ios/claseAuxiliar.mm" />
+        <header-file src="src/ios/TesseractPlugin.h" />
+        <source-file src="src/ios/TesseractPlugin.m" />
+        <!-- set the tessdata directory as a resource so it can go with the app -->
+        <resource-file src="tessdata" />
+    </platform>
+    
+
+</plugin>

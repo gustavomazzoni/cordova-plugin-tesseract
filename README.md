@@ -8,7 +8,7 @@ This is a Cordova/Ionic plugin for OCR process using Tesseract library for both 
 ```bash
 $ ionic platform add android
 ```
-substitute android with ios to build for iOS.
+-> substitute android with ios to build for iOS.
 
 ### 1. Download or clone this project, copy it to your app root folder and run ionic command to add the plugin:
 ```bash

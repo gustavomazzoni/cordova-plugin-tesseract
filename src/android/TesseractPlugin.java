@@ -1,4 +1,4 @@
-package com.menufortourist.cordova;
+package com.gmazzoni.cordova;
 
 import java.io.File;
 import java.io.FileOutputStream;

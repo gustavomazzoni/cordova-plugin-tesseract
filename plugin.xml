@@ -17,7 +17,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="TesseractPlugin">
-                <param name="android-package" value="com.menufortourist.cordova.TesseractPlugin"/>
+                <param name="android-package" value="com.gmazzoni.cordova.TesseractPlugin"/>
             </feature>
         </config-file>
 

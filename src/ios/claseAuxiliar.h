@@ -1,10 +1,9 @@
 //
 //  claseAuxiliar.h
-//  pruebaTesseract
 //
-//  Created by Admin on 03/06/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  @author Gustavo Mazzoni - 2016.
 //
+
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 

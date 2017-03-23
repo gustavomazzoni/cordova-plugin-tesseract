@@ -81,10 +81,10 @@ dependencies {
 
 #### 2.4 Edit `your-project/platforms/android/cordova/lib/build.js` file that generates `settings.gradle` file:
 
-* Edit `your-project/platforms/android/cordova/lib/build.js` and replace the `fs.writeFileSync()` function call after `// Write the settings.gradle file.` (at line 273) with:
+* Edit `your-project/platforms/android/cordova/lib/builders/GradleBuilder.js` and replace the `fs.writeFileSync()` function call after `// Write the settings.gradle file.` (at line 101) with:
 ```bash
 //##### EDITED - Added tess-two library dependency
-fs.writeFileSync(path.join(projectPath, 'settings.gradle'),
+fs.writeFileSync(path.join(this.root, 'settings.gradle'),
     '// GENERATED FILE - DO NOT EDIT\n' +
     'include ":"\n' + settingsGradlePaths.join('') +
     'include ":tess-two"');

@@ -1,0 +1,37 @@
+{
+  "name": "cordova-plugin-tesseract",
+  "version": "0.0.1",
+  "description": "\n\t\tThis plugin allows to recognise text from images\n\t",
+  "cordova": {
+    "id": "cordova-plugin-tesseract",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.6.0"
+    },
+    {
+      "name": "cordova-android",
+      "version": ">=3.6.0"
+    }
+  ],
+  "author": " gustavomazzoni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#issues"
+  },
+  "homepage": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#readme"
+}

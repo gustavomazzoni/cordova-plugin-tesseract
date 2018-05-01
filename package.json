@@ -1,7 +1,32 @@
 {
-  "name": "cordova-plugin-tesseract",
-  "version": "0.0.1",
-  "description": "\n\t\tThis plugin allows to recognise text from images\n\t",
+  "_from": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+  "_id": "cordova-plugin-tesseract@0.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-tesseract",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+    "rawSpec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+    "saveSpec": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+    "fetchSpec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git#e909e00977161e53d905ffaf78dd5b92e497dcee",
+  "_spec": "https://github.com/gustavomazzoni/cordova-plugin-tesseract",
+  "_where": "/home/varun/dev/ocr/node_modules",
+  "author": {
+    "name": "gustavomazzoni"
+  },
+  "bugs": {
+    "url": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-tesseract",
     "platforms": [
@@ -9,15 +34,8 @@
       "android"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git"
-  },
-  "keywords": [
-    "ecosystem:cordova",
-    "cordova-ios",
-    "cordova-android"
-  ],
+  "deprecated": false,
+  "description": "\n\t\tThis plugin allows to recognise text from images\n\t",
   "engines": [
     {
       "name": "cordova",
@@ -28,10 +46,17 @@
       "version": ">=3.6.0"
     }
   ],
-  "author": " gustavomazzoni",
+  "homepage": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#issues"
+  "name": "cordova-plugin-tesseract",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavomazzoni/cordova-plugin-tesseract.git"
   },
-  "homepage": "https://github.com/gustavomazzoni/cordova-plugin-tesseract#readme"
+  "version": "0.0.1"
 }

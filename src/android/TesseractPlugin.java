@@ -118,9 +118,15 @@ public class TesseractPlugin extends CordovaPlugin {
             Log.v(TAG, "couldn't find tessdata, downloading");
             DownloadAndCopy job = new DownloadAndCopy();
             job.execute(lang);
+            try {
+            job.get(); //wait for download to complete
+            } catch (Exception e) {
+                Log.v(TAG, "download task interrupted");
+                e.printStackTrace();
+                return "Interrupted";
+            }
         } else 
             Log.v(TAG, "Found existing tessdata");
-
         return "Ok";
     }
 

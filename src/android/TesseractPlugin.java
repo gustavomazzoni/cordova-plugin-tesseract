@@ -3,6 +3,7 @@ package com.gmazzoni.cordova;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -83,6 +84,8 @@ public class TesseractPlugin extends CordovaPlugin {
         baseApi.setImage(bitmap);
 
         String recognizedText = "";
+        Log.v(TAG, "calling baseApi.getUTF8Text()");
+
         recognizedText = baseApi.getUTF8Text();
 
         baseApi.end();
@@ -112,9 +115,18 @@ public class TesseractPlugin extends CordovaPlugin {
         }
 
         if (!(new File(DATA_PATH + "tessdata/" + lang + ".traineddata")).exists()) {
+            Log.v(TAG, "couldn't find tessdata, downloading");
             DownloadAndCopy job = new DownloadAndCopy();
             job.execute(lang);
-        }
+            try {
+            job.get(); //wait for download to complete
+            } catch (Exception e) {
+                Log.v(TAG, "download task interrupted");
+                e.printStackTrace();
+                return "Interrupted";
+            }
+        } else 
+            Log.v(TAG, "Found existing tessdata");
         return "Ok";
     }
 
@@ -126,20 +138,24 @@ public class TesseractPlugin extends CordovaPlugin {
             // do above Server call here
             try {
                 Log.v(TAG, "Downloading " + lang + ".traineddata");
-                URL url = new URL("https://cdn.rawgit.com/naptha/tessdata/gh-pages/3.02/"+lang+".traineddata.gz");
-                GZIPInputStream gzip = new GZIPInputStream(url.openStream());
-                Log.v(TAG, "Downloaded and unziped " + lang + ".traineddata");
+                // tess two now supports tessdata 3.04, and switching to official repo 
+                String stringURL = "https://github.com/tesseract-ocr/tessdata/raw/3.04.00/" + lang + ".traineddata";
+                Log.v(TAG, "downloading from url " + stringURL);
+                URL url = new URL(stringURL);
 
+		InputStream input = new BufferedInputStream(url.openStream(), 8192);
+                   		
+			
                 OutputStream out = new FileOutputStream(DATA_PATH
                         + "tessdata/" + lang + ".traineddata");
 
                 byte[] buf = new byte[1024];
                 int len;
-                while ((len = gzip.read(buf)) > 0) {
+                while ((len = input.read(buf)) > 0) {
                     out.write(buf, 0, len);
                 }
 
-                gzip.close();
+                input.close();
                 out.close();
 
                 Log.v(TAG, "Copied " + lang + ".traineddata");

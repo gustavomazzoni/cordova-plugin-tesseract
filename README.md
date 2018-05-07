@@ -19,7 +19,11 @@ $ ionic platform add android
 ```
 -> substitute android with ios to build for iOS.
 
+-> substitute ionic with cordova to build on cordova.
+
 ### 1. Download or clone this project, copy it to your app root folder and run ionic command to add the plugin:
+
+#### Ionic 
 ```bash
 $ git clone https://github.com/gustavomazzoni/cordova-plugin-tesseract
 $ cp -rf cordova-plugin-tesseract your-project/cordova-plugin-tesseract
@@ -27,68 +31,14 @@ $ cd your-project/
 $ ionic plugin add cordova-plugin-tesseract
 ```
 
+#### Cordova
+
+```bash
+$ cordova plugin add https://github.com/gustavomazzoni/cordova-plugin-tesseract
+```
+
+
 ### 2. For Android platform:
-
-#### 2.1 Download or clone [tess-two project](https://github.com/rmtheis/tess-two) (it contains Tesseract library for Android) and copy the 'tess-two' folder inside of it to your android platform:
-```bash
-$ git clone https://github.com/rmtheis/tess-two
-$ cp -rf tess-two/tess-two/ your-project/platforms/android/tess-two
-```
-
-#### 2.2 Edit `your-project/platforms/android/tess-two/build.gradle` and replace all content with:
-```bash
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.14.0'
-    }
-}
-
-apply plugin: 'android-library'
-
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
-    defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion 23
-    }
-
-    sourceSets.main {
-        manifest.srcFile 'AndroidManifest.xml'
-        java.srcDirs = ['src']
-        resources.srcDirs = ['src']
-        res.srcDirs = ['res']
-        jniLibs.srcDirs = ['libs']
-    }
-}
-```
-
-#### 2.3 Edit `your-project/platforms/android/build.gradle` file and add 'tess-two' as a dependency to your project (after `// SUB-PROJECT DEPENDENCIES END` line):
-```bash
-dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
-    // SUB-PROJECT DEPENDENCIES START
-    debugCompile project(path: "CordovaLib", configuration: "debug")
-    releaseCompile project(path: "CordovaLib", configuration: "release")
-    // SUB-PROJECT DEPENDENCIES END
-    compile project(':tess-two')
-}
-```
-
-#### 2.4 Edit `your-project/platforms/android/cordova/lib/build.js` file that generates `settings.gradle` file:
-
-* Edit `your-project/platforms/android/cordova/lib/builders/GradleBuilder.js` and replace the `fs.writeFileSync()` function call after `// Write the settings.gradle file.` (at line 101) with:
-```bash
-//##### EDITED - Added tess-two library dependency
-fs.writeFileSync(path.join(this.root, 'settings.gradle'),
-    '// GENERATED FILE - DO NOT EDIT\n' +
-    'include ":"\n' + settingsGradlePaths.join('') +
-    'include ":tess-two"');
-```
 
 #### 2.5 Your project is ready to use this plugin on Android platform. Build your project:
 ```bash
@@ -130,7 +80,10 @@ cordova-plugin-tesseract is designed to recognize text in images in many languag
 To use this plugin and recognize text in images, you need to:
 
 ### 1. Download the language
-As soon as you enter on your OCR use case, call `TesseractPlugin.loadLanguage` function to download the tessdata for your language:
+As soon as you enter on your OCR use case, call `TesseractPlugin.loadLanguage` function to download the tessdata for your language.
+
+Language must be in format like `eng` . For a list of compatible languages check [this link](https://github.com/tesseract-ocr/tessdata/tree/3.04.00).
+
 ```bash
 TesseractPlugin.loadLanguage(language, function(response) {
   deferred.resolve(response);
